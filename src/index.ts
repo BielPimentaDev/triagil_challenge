@@ -1,6 +1,5 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import { teamsRouter } from './routes/teamsRoute';
-import { teamsModel } from './models/teamsModel';
 
 const app = express();
 app.use(express.json());
