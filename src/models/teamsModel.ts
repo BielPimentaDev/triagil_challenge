@@ -10,7 +10,7 @@ const createTeam = async (content: object) => {
 		JSONcontent[index] = content;
 		const contentJSON = JSON.stringify(JSONcontent);
 		await fs.writeFile(FILE, contentJSON);
-		return index;
+		return { ...JSONcontent[index], id: index };
 	} catch (err) {
 		console.log('Houve um erro', err);
 	}
@@ -35,6 +35,19 @@ const getTeamById = async (id: string) => {
 		console.log('Houve um erro', err);
 	}
 };
+const deleteTeam = async (id: string) => {
+	try {
+		const prevContent = await fs.readFile(FILE, 'utf8');
+		const JSONcontent = JSON.parse(prevContent);
+		const selectedContent = JSONcontent[id];
+		delete JSONcontent[id];
+		const contentJSON = JSON.stringify(JSONcontent);
+		await fs.writeFile(FILE, contentJSON);
 
-// export const teamsModel = { createTeam, getTeams, getTeamById };
-module.exports = { createTeam, getTeams, getTeamById };
+		return selectedContent;
+	} catch (err) {
+		console.log('Houve um erro', err);
+	}
+};
+
+export const teamsModel = { createTeam, getTeams, getTeamById, deleteTeam };

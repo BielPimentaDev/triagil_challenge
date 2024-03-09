@@ -1,0 +1,9 @@
+{
+	"openapi": "3.0.1",
+	"info": {
+		"version": "0.0.1",
+		"title": "API TEST",
+		"decription": "API Test with swagger"
+	},
+	"servers": [{ "url": "http://localhost:3000/" }]
+}
