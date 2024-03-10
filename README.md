@@ -5,9 +5,9 @@ Esse repositório é dedicado para resolver o desafio proposto no link: https://
 
 ##Endpoints disponível
 
-###Get
-###GET
-/api/teams retorna todos os times até entao criados. 
+## Get
+### /api/teams
+retorna todos os times até entao criados. 
 Exemplo:
   {
 	"1": {
@@ -30,10 +30,12 @@ Exemplo:
 }
 
 ## GET:id 
-/api/teams/:id retorna uma determinada equipe baseada no seu id.
+### /api/teams/:id
+retorna uma determinada equipe baseada no seu id.
 
 ## POST
-/api/teams post nesse endpoint cria uma nova equipe com um nome do dono da equipe e a lista de pokemons.
+### /api/teams
+Executar um post nesse endpoint cria uma nova equipe com um nome do dono da equipe e a lista de pokemons.
 Exemplo de uma requisiçâo:
   {
 	"owner": "Ash",
