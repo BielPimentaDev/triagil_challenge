@@ -47,13 +47,13 @@ Exemplo de uma requisiçâo:
 A documentação dese projeto foi criada usando Swagger. Pode ser acessada no endpoint: /api-docs
 
 <p align="center">
-  <img src="imgs/documentation.png" alt="drawing" height="300"/>
+  <img src="/imgs/documentation.png" alt="drawing" height="300"/>
 </p>
 
 ## Testes
 Todos os endpoint mencionados foram testados usando a biblioteca jest para garantir que estejan funcionando de forma apropriada.
 <p align="center">
-  <img src="test.png" alt="drawing" height="300"/>
+  <img src="/imsg/test.png" alt="drawing" height="300"/>
 </p>
 
 ## Inicializar o projeto
