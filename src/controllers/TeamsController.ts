@@ -9,11 +9,17 @@ const getTeams = async (req: Request, res: Response) => {
 
 const getTeambyId = async (req: Request, res: Response) => {
 	const id = req.params.id;
+	if (!id) {
+		res.status(400).send('Missing parameters');
+	}
 	const teamById = await teamsModel.getTeamById(id);
 	res.send(teamById);
 };
 const deleteTeam = async (req: Request, res: Response) => {
 	const id = req.params.id;
+	if (!id) {
+		res.status(400).send('Missing parameters');
+	}
 	const teamById = await teamsModel.deleteTeam(id);
 	res.send(teamById);
 };
@@ -22,21 +28,22 @@ const createTeam = async (req: Request, res: Response) => {
 	const body = req.body;
 	const owner = body.owner;
 	const team: string[] = body.team;
-
+	if (!body.owner || !body.team) {
+		res.status(400).send('Missing parameters');
+	}
 	const pokemons: object[] = [];
-
+	let message = 'Success';
 	for (const component of team) {
 		const pokemon = await pokeAPI.getPokemon(component);
 		if (pokemon) {
 			pokemons.push(pokemon);
 		} else {
-			console.log(`Pokemon ${component} nâo encontrado.`);
+			message = `Pokemon was not found`;
 		}
 	}
 
 	const createdTeam = await teamsModel.createTeam({ owner, pokemons });
-
-	res.send({ message: 'Success', createdTeam });
+	res.send({ message, createdTeam });
 };
 
 export const TeamsController = {

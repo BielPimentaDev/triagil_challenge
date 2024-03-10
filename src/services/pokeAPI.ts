@@ -11,6 +11,7 @@ const getPokemon = async (pokemonName: string) => {
 			weight,
 			height,
 		};
+		console.log(pokemon);
 		return pokemon;
 	} catch (err: any) {
 		console.error('Erro ao consultar API externa:', err.message);

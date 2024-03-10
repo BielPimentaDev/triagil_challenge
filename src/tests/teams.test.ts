@@ -1,27 +1,34 @@
 import { teamsModel } from '../models/teamsModel';
-
 const cryptos = require('crypto');
 const axios = require('axios');
 
 const generate = () => {
 	return cryptos.randomBytes(20).toString('hex');
 };
+const pikachu = {
+	id: 25,
+	name: 'pikachu',
+	weight: 60,
+	height: 4,
+};
 
 test('Should get teams', async () => {
 	const owner1 = generate();
 	const owner2 = generate();
 	const owner3 = generate();
+
 	const team1 = await teamsModel.createTeam({
 		owner: owner1,
-		team: ['pikachu'],
+		team: [pikachu],
 	});
+
 	const team2 = await teamsModel.createTeam({
 		owner: owner2,
-		team: ['pikachu'],
+		team: [pikachu],
 	});
 	const team3 = await teamsModel.createTeam({
 		owner: owner3,
-		team: ['pikachu'],
+		team: [pikachu],
 	});
 
 	const response = await axios.get('http://localhost:3000/api/teams');
@@ -40,7 +47,7 @@ test('Should get team by id', async () => {
 	const owner = generate();
 	const createdTeam = await teamsModel.createTeam({
 		owner,
-		team: ['pikachu'],
+		team: [pikachu],
 	});
 	const response = await axios.get(
 		`http://localhost:3000/api/teams/${createdTeam.id}`
@@ -49,18 +56,17 @@ test('Should get team by id', async () => {
 	await teamsModel.deleteTeam(createdTeam.id);
 });
 
-test.only('Should post a team', async () => {
+test('Should post a team', async () => {
 	const owner = generate();
 
 	const response = await axios.post('http://localhost:3000/api/teams', {
 		owner,
-		team: ['pikachu'],
+		team: [pikachu],
 	});
 
 	const createdTeam = await teamsModel.getTeamById(
 		response.data.createdTeam.id
 	);
 	expect(createdTeam.owner).toBe(owner);
-
 	await teamsModel.deleteTeam(response.data.createdTeam.id);
 });

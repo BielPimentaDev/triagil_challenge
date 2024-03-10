@@ -2,8 +2,77 @@
 	"openapi": "3.0.1",
 	"info": {
 		"version": "0.0.1",
-		"title": "API TEST",
-		"decription": "API Test with swagger"
+		"title": "Pokemon Team API",
+		"decription": "API for team management"
 	},
-	"servers": [{ "url": "http://localhost:3000/" }]
+	"servers": [{ "url": "http://localhost:3000/" }],
+	"schema": ["http", "https"],
+	"paths": {
+		"/api/teams": {
+			"get": {
+				"description": "List all teams",
+				"operationId": "teamsList",
+				"responses": {
+					"200": {
+						"description": "Sucesso"
+					}
+				}
+			},
+
+			"post": {
+				"summary": "Criar uma nova equipe",
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"required": true,
+						"schema": {
+							"type": "object",
+							"properties": {
+								"owner": {
+									"type": "string",
+									"description": "Nome do dono da equipe"
+								},
+								"team": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"description": "Array de nomes de Pokémon"
+								}
+							},
+							"required": ["owner", "team"]
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Sucesso"
+					}
+				}
+			}
+		},
+		"/api/teams/{id}": {
+			"get": {
+				"sumary": "Get an specific team by its id",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"type": "string",
+						"description": "The id of the team that is being searched"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Team details"
+					},
+					"404": {
+						"description": "Team not found"
+					}
+				}
+			}
+		}
+	}
 }
