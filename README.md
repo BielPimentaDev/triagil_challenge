@@ -50,17 +50,17 @@ A documentação dese projeto foi criada usando Swagger. Pode ser acessada no en
   <img src="imgs/documentation.png" alt="drawing" height="300"/>
 </p>
 
-##Testes
+## Testes
 Todos os endpoint mencionados foram testados usando a biblioteca jest para garantir que estejan funcionando de forma apropriada.
 <p align="center">
   <img src="test.png" alt="drawing" height="300"/>
 </p>
 
-##Inicializar o projeto
+## Inicializar o projeto
 Basta rodar o comando: 
 docker build -t triagil_challenger
 docker run -p 3000:3000 triagil_challenger
 
-##Obrigado por acompanhar!
+## Obrigado por acompanhar!
 Agradeço a oportunidade de participar deste desafio, pude colocar em prática meus conhecimentos e aprender mais.
 Acompanhe para mais projetos
