@@ -3,13 +3,14 @@
 	"info": {
 		"version": "0.0.1",
 		"title": "Pokemon Team API",
-		"decription": "API for team management"
+		"decription": "API for team managemente"
 	},
 	"servers": [{ "url": "http://localhost:3000/" }],
 	"schema": ["http", "https"],
 	"paths": {
 		"/api/teams": {
 			"get": {
+				"summary": "Get all current teams",
 				"description": "List all teams",
 				"operationId": "teamsList",
 				"responses": {
@@ -20,41 +21,51 @@
 			},
 
 			"post": {
-				"summary": "Criar uma nova equipe",
-				"parameters": [
-					{
-						"name": "body",
-						"in": "body",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"owner": {
-									"type": "string",
-									"description": "Nome do dono da equipe"
-								},
-								"team": {
-									"type": "array",
-									"items": {
-										"type": "string"
+				"summary": "Create a team",
+				"description": "Endpoint to create a new team",
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"owner": {
+										"type": "string",
+										"description": "Nome do proprietário"
 									},
-									"description": "Array de nomes de Pokémon"
+									"team": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"description": "Lista de membros da equipe"
+									}
+								},
+								"required": ["owner", "team"],
+								"example": {
+									"owner": "Ash",
+									"team": ["pikachu", "blastoise"]
 								}
-							},
-							"required": ["owner", "team"]
+							}
 						}
 					}
-				],
-				"responses": {
-					"200": {
-						"description": "Sucesso"
-					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success"
+				},
+				"400": {
+					"description": "Invalid request"
 				}
 			}
 		},
 		"/api/teams/{id}": {
 			"get": {
 				"sumary": "Get an specific team by its id",
+				"description": "Get a specfic team by id",
+				"operationId": "getTeam",
 				"parameters": [
 					{
 						"name": "id",

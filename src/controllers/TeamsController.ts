@@ -30,6 +30,7 @@ const createTeam = async (req: Request, res: Response) => {
 	const team: string[] = body.team;
 	if (!body.owner || !body.team) {
 		res.status(400).send('Missing parameters');
+		console.log(body);
 	}
 	const pokemons: object[] = [];
 	let message = 'Success';
@@ -38,7 +39,7 @@ const createTeam = async (req: Request, res: Response) => {
 		if (pokemon) {
 			pokemons.push(pokemon);
 		} else {
-			message = `Pokemon was not found`;
+			message += `. Pokemon ${component} was not found.`;
 		}
 	}
 

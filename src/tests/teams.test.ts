@@ -12,6 +12,21 @@ const pikachu = {
 	height: 4,
 };
 
+test('Should post a team', async () => {
+	const owner = generate();
+
+	const response = await axios.post('http://localhost:3000/api/teams', {
+		owner,
+		team: [pikachu],
+	});
+
+	const createdTeam = await teamsModel.getTeamById(
+		response.data.createdTeam.id
+	);
+	expect(createdTeam.owner).toBe(owner);
+	await teamsModel.deleteTeam(response.data.createdTeam.id);
+});
+
 test('Should get teams', async () => {
 	const owner1 = generate();
 	const owner2 = generate();
@@ -54,19 +69,4 @@ test('Should get team by id', async () => {
 	);
 	expect(response.data.owner).toBe(owner);
 	await teamsModel.deleteTeam(createdTeam.id);
-});
-
-test('Should post a team', async () => {
-	const owner = generate();
-
-	const response = await axios.post('http://localhost:3000/api/teams', {
-		owner,
-		team: [pikachu],
-	});
-
-	const createdTeam = await teamsModel.getTeamById(
-		response.data.createdTeam.id
-	);
-	expect(createdTeam.owner).toBe(owner);
-	await teamsModel.deleteTeam(response.data.createdTeam.id);
 });
