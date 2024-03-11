@@ -29,7 +29,7 @@ Exemplo:
 				"height": 16
 			}
 		]
-	},
+	}
 }
 
 ### GET:id 
