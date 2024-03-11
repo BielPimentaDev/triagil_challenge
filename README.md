@@ -9,17 +9,9 @@ Esse repositório é dedicado para resolver o desafio proposto no link: https://
 
 #### /api/teams
 
-
-
-{
-  "nome": "Exemplo",
-  "descricao": "Este é um exemplo de como incluir um JSON em um arquivo README.",
-  "versao": "1.0",
-  "autor": "Seu Nome"
-}
-
 Este endpooint retorna todos os times até então criados. 
 Exemplo:
+
   {
 	"1": {
 		"owner": "Ash",
