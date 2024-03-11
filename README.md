@@ -1,6 +1,6 @@
 ﻿# Desafio Triágil
 
-## Introduçâo
+## Introdução
 Esse repositório é dedicado para resolver o desafio proposto no link: https://github.com/triagilbr/desafio-triagil
 
 ## Endpoints disponível
